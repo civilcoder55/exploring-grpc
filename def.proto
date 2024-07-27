@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service UnaryService {
+    rpc echo (Request) returns (Response) {}
+}
+
+service StreamService {
+    rpc serverStreamEcho (Request) returns (stream Response) {}
+    rpc clientStreamEcho (stream Request) returns (Response) {}
+}
+
+message Empty {}
+
+message Request {
+    string message = 1;
+}
+
+message Response {
+    string echo = 1;
+}
